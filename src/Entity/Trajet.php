@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,6 +45,16 @@ class Trajet
      * @ORM\JoinColumn(nullable=false)
      */
     private $conducteur;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="passagerTrajets")
+     */
+    private $passager;
+
+    public function __construct()
+    {
+        $this->passager = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +117,32 @@ class Trajet
     public function setConducteur(?User $conducteur): self
     {
         $this->conducteur = $conducteur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getPassager(): Collection
+    {
+        return $this->passager;
+    }
+
+    public function addPassager(User $passager): self
+    {
+        if (!$this->passager->contains($passager)) {
+            $this->passager[] = $passager;
+        }
+
+        return $this;
+    }
+
+    public function removePassager(User $passager): self
+    {
+        if ($this->passager->contains($passager)) {
+            $this->passager->removeElement($passager);
+        }
 
         return $this;
     }

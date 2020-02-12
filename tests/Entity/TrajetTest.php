@@ -63,9 +63,9 @@ final class TrajetTest extends TestCase
     public function testTrajetPassager()
     {
         $user = new User();
-        $this->trajet->setPassager($user);
+        $this->trajet->addPassager($user);
         $user->addPassagerTrajet($this->trajet);
-        $this->assertEquals($user, $this->trajet->getPassager());
+        $this->assertContains($user, $this->trajet->getPassager());
         $this->assertContains($this->trajet, $user->getPassagerTrajets());
     }
 
