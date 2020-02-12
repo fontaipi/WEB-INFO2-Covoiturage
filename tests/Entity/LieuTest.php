@@ -18,4 +18,10 @@ final class LieuTest extends TestCase
         $this->assertNull($this->lieu->getId());
     }
 
+    public function testLieuNom(): void
+    {
+        $this->lieu->setNom("Alsace Lorraine");
+        $this->assertEquals("Alsace Lorraine", $this->lieu->getNom());
+    }
+
 }
