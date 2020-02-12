@@ -55,7 +55,7 @@ final class TrajetTest extends TestCase
     {
         $user = new User();
         $this->trajet->setConducteur($user);
-        $user->addConducteurTrajets($this->trajet);
+        $user->addConducteurTrajet($this->trajet);
         $this->assertEquals($user, $this->trajet->getConducteur());
         $this->assertContains($this->trajet, $user->getConducteurTrajets());
     }
