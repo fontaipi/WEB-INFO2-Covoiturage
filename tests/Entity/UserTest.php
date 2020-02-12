@@ -1,7 +1,6 @@
 <?php
 
 use App\Entity\User;
-use Doctrine\ORM\Mapping\Entity;
 use PHPUnit\Framework\TestCase;
 
 final class UserTest extends TestCase
