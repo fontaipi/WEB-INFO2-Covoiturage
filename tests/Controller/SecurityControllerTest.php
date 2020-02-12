@@ -7,7 +7,7 @@ class SecurityControllerTest extends WebTestCase
     public function testLogin(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/login');
+        $crawler = $client->request('GET', '/login');
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 
@@ -15,7 +15,7 @@ class SecurityControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->followRedirects();
-        $client->request('GET', '/logout');
+        $crawler = $client->request('GET', '/logout');
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 }
