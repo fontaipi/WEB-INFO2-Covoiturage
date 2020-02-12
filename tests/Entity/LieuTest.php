@@ -1,6 +1,6 @@
 <?php
 
-use App\Entity\User;
+use App\Entity\Lieu;
 use PHPUnit\Framework\TestCase;
 
 final class LieuTest extends TestCase
@@ -16,12 +16,6 @@ final class LieuTest extends TestCase
     {
         $this->assertInstanceOf(Lieu::class, $this->lieu);
         $this->assertNull($this->lieu->getId());
-    }
-
-    public function testUserNom(): void
-    {
-        $this->user->setNom("martin");
-        $this->assertEquals("martin", $this->user->getNom());
     }
 
 }
