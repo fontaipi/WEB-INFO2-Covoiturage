@@ -26,6 +26,18 @@ class Trajet
      */
     private $datetime;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="departtrajet")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $lieudepart;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="arriveTrajet")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $lieuarrive;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +63,30 @@ class Trajet
     public function setDatetime(\DateTimeInterface $datetime): self
     {
         $this->datetime = $datetime;
+
+        return $this;
+    }
+
+    public function getLieudepart(): ?Lieu
+    {
+        return $this->lieudepart;
+    }
+
+    public function setLieudepart(?Lieu $lieudepart): self
+    {
+        $this->lieudepart = $lieudepart;
+
+        return $this;
+    }
+
+    public function getLieuarrive(): ?Lieu
+    {
+        return $this->lieuarrive;
+    }
+
+    public function setLieuarrive(?Lieu $lieuarrive): self
+    {
+        $this->lieuarrive = $lieuarrive;
 
         return $this;
     }
