@@ -34,12 +34,18 @@ final class UserTest extends TestCase
     public function testUserUsername(): void
     {
         $this->user->setUsername("philou38");
-        $this->assertEquals("philippe", $this->user->getUsername());
+        $this->assertEquals("philou38", $this->user->getUsername());
     }
 
     public function testUserPassword(): void
     {
         $this->user->setPassword("azerty");
         $this->assertEquals("azerty", $this->user->getPassword());
+    }
+
+    public function testUserEmail(): void
+    {
+        $this->user->setEmail("azerty@mail.com");
+        $this->assertEquals("azerty@mail.com", $this->user->getEmail());
     }
 }
