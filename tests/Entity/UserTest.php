@@ -1,25 +1,33 @@
 <?php
 
 use App\Entity\User;
+use Doctrine\ORM\Mapping\Entity;
 use PHPUnit\Framework\TestCase;
 
 final class UserTest extends TestCase
 {
-    public function testNewUser(): void {
-        $user = new User();
-        $this->assertInstanceOf(User::class, $user);
-        $this->assertNull($user->getId());
+    protected $user;
+
+    public function setUp(): void
+    {
+        $this->user = new User();
     }
 
-    public  function testUserNom(): void {
-        $user = new User();
-        $user->setNom("martin");
-        $this->assertEquals("martin", $user->getNom());
+    public function testNewUser(): void
+    {
+        $this->assertInstanceOf(User::class, $this->user);
+        $this->assertNull($this->user->getId());
     }
 
-    public  function testUserPrenom(): void {
-        $user = new User();
-        $user->setPrenom("philippe");
-        $this->assertEquals("philippe", $user->getPrenom());
+    public function testUserNom(): void
+    {
+        $this->user->setNom("martin");
+        $this->assertEquals("martin", $this->user->getNom());
+    }
+
+    public function testUserPrenom(): void
+    {
+        $this->user->setPrenom("philippe");
+        $this->assertEquals("philippe", $this->user->getPrenom());
     }
 }
