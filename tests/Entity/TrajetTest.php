@@ -1,5 +1,6 @@
 <?php
 
+use App\Entity\Lieu;
 use App\Entity\Trajet;
 use PHPUnit\Framework\TestCase;
 
@@ -22,6 +23,20 @@ final class TrajetTest extends TestCase
     {
         $this->trajet->setPlaces(8);
         $this->assertEquals(8, $this->trajet->getPlaces());
+    }
+
+    public function testTrajetDateTime(): void
+    {
+        $date = new DateTime();
+        $this->trajet->setDateTime($date);
+        $this->assertEquals($date, $this->trajet->getDateTime());
+    }
+
+    public function testTrajetLieuDepart(): void
+    {
+        $lieu = new Lieu();
+        $this->trajet->setLieuDepart($lieu);
+        $this->assertEquals($lieu, $this->trajet->getLieuDepart());
     }
 
 }
