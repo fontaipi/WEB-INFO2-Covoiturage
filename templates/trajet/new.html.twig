@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créer un trajet!{% endblock %}
+{% block title %}New Trajet{% endblock %}
 
 {% block body %}
-    <div class="trajet_wrapper">
-        Nouveau trajet
-    </div>
+    <h1>Create new Trajet</h1>
+
+    {{ include('trajet/_form.html.twig') }}
+
+    <a href="{{ path('trajet_index') }}">back to list</a>
 {% endblock %}
