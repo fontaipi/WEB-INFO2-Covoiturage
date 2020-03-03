@@ -32,7 +32,7 @@ class DefaultControllerTest extends WebTestCase
         self::assertSelectorTextSame('a[href="/trajet/new"]', 'Nouveau trajet');
 
         $client->clickLink('Déconnexion');
-        $this->assertResponseRedirects('http://localhost/');
+        $this->assertResponseRedirects('http://localhost/trajet/new');
 
     }
 }
