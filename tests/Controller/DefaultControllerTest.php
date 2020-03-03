@@ -16,11 +16,12 @@ class DefaultControllerTest extends WebTestCase
 
     public function testHomepageuser(): void
     {
-        $client = static::createClient([
-            'PHP_AUTH_USER' => 'username',
-            'PHP_AUTH_PW' => 'password'
+        $client = static::createClient([],[
+            'PHP_AUTH_USER' => 'admin',
+            'PHP_AUTH_PW' => '123456'
         ]);
         $crawler = $client->request('GET','/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertSelectorExists('a[href="/logout"]');
 
     }
