@@ -16,8 +16,14 @@ class TrajetType extends AbstractType
         $builder
             ->add('places')
             ->add('datetime')
-            ->add('lieudepart')
-            ->add('lieuarrive')
+            ->add('lieudepart', EntityType::class, [
+                'class' => \App\Entity\Lieu::class,
+                'choice_label' => 'nom'
+            ])
+            ->add('lieuarrive', EntityType::class, [
+                'class' => \App\Entity\Lieu::class,
+                'choice_label' => 'nom'
+            ])
             ->add('conducteur', EntityType::class, [
                 // looks for choices from this entity
                 'class' => \App\Entity\User::class,
@@ -29,8 +35,7 @@ class TrajetType extends AbstractType
                 'class' => \App\Entity\User::class,
                 // uses the User.username property as the visible option string
                 'choice_label' => 'username',
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
