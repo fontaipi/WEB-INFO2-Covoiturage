@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6826868a275cfa2f8261b4810f265a5",
+    "content-hash": "1ed9529d5bcfd05109a8baf29f02eac9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2135,16 +2135,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.0.0",
+            "version": "9.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a5be9621b19ee19dca5f150a5b159f48b5389547"
+                "reference": "68d7e5b17a6b9461e17c00446caa409863154f76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a5be9621b19ee19dca5f150a5b159f48b5389547",
-                "reference": "a5be9621b19ee19dca5f150a5b159f48b5389547",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/68d7e5b17a6b9461e17c00446caa409863154f76",
+                "reference": "68d7e5b17a6b9461e17c00446caa409863154f76",
                 "shasum": ""
             },
             "require": {
@@ -2217,7 +2217,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2020-02-07T06:56:17+00:00"
+            "time": "2020-02-13T07:30:12+00:00"
         },
         {
             "name": "psr/cache",
