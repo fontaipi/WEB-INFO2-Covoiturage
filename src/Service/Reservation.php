@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Utils;
+namespace App\Service;
 
 
 use App\Entity\Trajet;
