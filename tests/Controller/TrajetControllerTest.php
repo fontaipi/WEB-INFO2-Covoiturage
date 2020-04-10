@@ -34,9 +34,8 @@ class TrajetControllerTest extends WebTestCase
     public function testNouveauTrajet(): void
     {
         $client = static::createClient();
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-
         $crawler = $client->request('GET', '/trajet/new');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         $form = $crawler->filter('.form-trajet')->form();
 
@@ -78,6 +77,19 @@ class TrajetControllerTest extends WebTestCase
         );
         $crawler = $client->request('GET', '/trajet/list');
         $this->assertNotEquals(401, $client->getResponse()->getStatusCode());
+    }
+
+    public function testUserSeeJoinTrajetRef() : void {
+        $client = static::createClient(
+            [],
+            [
+                'PHP_AUTH_USER' => 'admin',
+                'PHP_AUTH_PW' => '123456',
+            ]
+        );
+        $client->request('GET', '/trajet/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertSelectorExists('a[href="/trajet/1/join"]'); //1 correspond to the id of trajet in list
     }
 
     //scenario test creation de trajet
