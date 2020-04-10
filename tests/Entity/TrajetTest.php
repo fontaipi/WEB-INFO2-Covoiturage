@@ -95,4 +95,13 @@ final class TrajetTest extends TestCase
         $this->assertContains($this->trajet, $user->getPassagerTrajets());
     }
 
+    public function testRemoveTrajetOfUser() : void
+    {
+        $user = new User();
+        $this->trajet->addPassager($user);
+        $this->assertContains($this->trajet, $user->getPassagerTrajets());
+        $this->trajet->removePassager($user);
+        $this->assertNotContains($this->trajet, $user->getPassagerTrajets());
+    }
+
 }
