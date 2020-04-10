@@ -30,12 +30,7 @@ class TrajetType extends AbstractType
                 // uses the User.username property as the visible option string
                 'choice_label' => 'username',
             ])
-            ->add('passager', EntityType::class, [
-                // looks for choices from this entity
-                'class' => \App\Entity\User::class,
-                // uses the User.username property as the visible option string
-                'choice_label' => 'username',
-            ]);
+           ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
