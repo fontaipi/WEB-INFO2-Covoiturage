@@ -77,4 +77,13 @@ final class TrajetTest extends TestCase
         $this->assertNotContains($user, $this->trajet->getPassager());
     }
 
+    public function testAddTrajetInLieu() : void
+    {
+        $lieu = new Lieu();
+        $this->trajet->setLieuDepart($lieu);
+        $this->assertContains($this->trajet, $lieu->getDepartTrajet());
+        $this->trajet->setLieuArrive($lieu);
+        $this->assertContains($this->trajet, $lieu->getArriveTrajet());
+    }
+
 }
