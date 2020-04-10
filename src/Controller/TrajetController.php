@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Trajet;
+use App\Entity\User;
 use App\Form\TrajetType;
 use App\Repository\TrajetRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -10,7 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * @Route("/trajet")
  */
@@ -109,7 +111,7 @@ class TrajetController extends AbstractController
 
         $entityManager->flush();
 
-        return $this->redirectToRoute('trajet_index');
+        return $this->redirectToRoute('trajet_show', ['id' => $trajet->getId()]);
 
     }
 
@@ -127,6 +129,27 @@ class TrajetController extends AbstractController
 
         $entityManager->flush();
 
-        return $this->redirectToRoute('trajet_index');
+        return $this->redirectToRoute('trajet_show', ['id' => $trajet->getId()]);
+    }
+
+    /**
+     * @Route("/{id_trajet}/{id_user}/remove", name="trajet_remove_user", methods={"GET"})
+     *
+     * @ParamConverter("trajet", options={"mapping": {"id_trajet" : "id"}})
+     * @ParamConverter("user", options={"mapping": {"id_user"   : "id"}})
+     *
+     * @Template()
+     *
+     */
+    public function remove(Trajet $trajet, User $user): Response
+    {
+
+        $trajet->removePassager($user);
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('trajet_show', ['id' => $trajet->getId()]);
     }
 }

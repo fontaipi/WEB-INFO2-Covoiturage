@@ -24,7 +24,11 @@
             <td>
                 <ul>
                     {% for passager in trajet.passager %}
-                        <li>{{ passager.username }}</li>
+                        <li>{{ passager.username }}
+                            {% if app.user == trajet.conducteur %}
+                                <a href="{{ path('trajet_remove_user', {'id_trajet' : trajet.id, 'id_user' : passager.id}) }}">remove</a>
+                            {% endif %}
+                        </li>
                     {% endfor %}
                 </ul>
             </td>
