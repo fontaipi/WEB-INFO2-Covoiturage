@@ -1,5 +1,6 @@
 <?php
 
+use App\Entity\Trajet;
 use App\Entity\User;
 use PHPUnit\Framework\TestCase;
 
@@ -47,4 +48,13 @@ final class UserTest extends TestCase
         $this->user->setEmail("azerty@mail.com");
         $this->assertEquals("azerty@mail.com", $this->user->getEmail());
     }
+
+    public function testAddTrajetConducteur() : void
+    {
+        $trajet = new Trajet();
+        $this->user->addConducteurTrajet($trajet);
+        $this->assertContains($trajet, $this->user->getConducteurTrajets());
+    }
+
+
 }
