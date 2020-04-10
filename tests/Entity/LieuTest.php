@@ -54,4 +54,13 @@ final class LieuTest extends TestCase
         $this->lieu->removeArriveTrajet($this->trajet);
         $this->assertNotContains($this->trajet, $this->lieu->getArriveTrajet());
     }
+
+    public function testAddLieuToTrajet() : void
+    {
+        $this->lieu->addArriveTrajet($this->trajet);
+        $this->assertEquals($this->lieu, $this->trajet->getLieuArrive());
+        $this->lieu->addDepartTrajet($this->trajet);
+        $this->assertEquals($this->lieu, $this->trajet->getLieuDepart());
+    }
+
 }
