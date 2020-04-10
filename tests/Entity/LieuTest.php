@@ -1,15 +1,18 @@
 <?php
 
 use App\Entity\Lieu;
+use App\Entity\Trajet;
 use PHPUnit\Framework\TestCase;
 
 final class LieuTest extends TestCase
 {
     protected $lieu;
+    protected $trajet;
 
     public function setUp(): void
     {
         $this->lieu = new Lieu();
+        $this->trajet = new Trajet();
     }
 
     public function testLieu(): void
@@ -36,4 +39,11 @@ final class LieuTest extends TestCase
         $this->assertEquals(15.5, $this->lieu->getLongitude());
     }
 
+    public function testDepartTrajet()
+    {
+        $this->lieu->addDepartTrajet($this->trajet);
+        $this->assertContains($this->trajet, $this->lieu->getDeparttrajet());
+        $this->lieu->removeDepartTrajet($this->trajet);
+        $this->assertNotContains($this->trajet, $this->lieu->getDeparttrajet());
+    }
 }
