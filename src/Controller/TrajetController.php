@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Trajet;
 use App\Form\TrajetType;
 use App\Repository\TrajetRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -88,6 +89,43 @@ class TrajetController extends AbstractController
             $entityManager->remove($trajet);
             $entityManager->flush();
         }
+
+        return $this->redirectToRoute('trajet_index');
+    }
+
+    /**
+     * @Route("/{id}/join", name="trajet_join", methods={"GET"})
+     */
+    public function join(Trajet $trajet): Response
+    {
+
+        $user = $this->getUser();
+
+        if ($user != $trajet->getConducteur()) {
+            $trajet->addPassager($user);
+        }
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('trajet_index');
+
+    }
+
+    /**
+     * @Route("/{id}/leave", name="trajet_leave", methods={"GET"})
+     */
+    public function leave(Trajet $trajet): Response
+    {
+
+        $user = $this->getUser();
+
+        $trajet->removePassager($user);
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->flush();
 
         return $this->redirectToRoute('trajet_index');
     }

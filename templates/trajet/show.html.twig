@@ -7,18 +7,27 @@
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ trajet.id }}</td>
-            </tr>
-            <tr>
-                <th>Places</th>
-                <td>{{ trajet.places }}</td>
-            </tr>
-            <tr>
-                <th>Datetime</th>
-                <td>{{ trajet.datetime ? trajet.datetime|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ trajet.id }}</td>
+        </tr>
+        <tr>
+            <th>Places</th>
+            <td>{{ trajet.places }}</td>
+        </tr>
+        <tr>
+            <th>Datetime</th>
+            <td>{{ trajet.datetime ? trajet.datetime|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Passagers</th>
+            <td>
+                <ul>
+                    {% for passager in trajet.passager %}
+                        <li>{{ passager.username }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
         </tbody>
     </table>
 
