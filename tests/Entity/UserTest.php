@@ -70,4 +70,12 @@ final class UserTest extends TestCase
         $this->user->removeConducteurTrajet($trajet);
         $this->assertNotContains($trajet, $this->user->getConducteurTrajets());
     }
+
+    public function testRemoveTrajetPassager() : void
+    {
+        $trajet = new Trajet();
+        $this->user->addPassagerTrajet($trajet);
+        $this->user->removePassagerTrajet($trajet);
+        $this->assertNotContains($trajet, $this->user->getPassagerTrajets());
+    }
 }
