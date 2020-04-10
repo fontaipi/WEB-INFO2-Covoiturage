@@ -63,4 +63,16 @@ final class LieuTest extends TestCase
         $this->assertEquals($this->lieu, $this->trajet->getLieuDepart());
     }
 
+    public function testRemoveLieuOfTrajet() : void
+    {
+        $this->lieu->addArriveTrajet($this->trajet);
+        $this->assertEquals($this->lieu, $this->trajet->getLieuArrive());
+        $this->lieu->removeArriveTrajet($this->trajet);
+        $this->assertNull($this->trajet->getLieuArrive());
+        $this->lieu->addDepartTrajet($this->trajet);
+        $this->assertEquals($this->lieu, $this->trajet->getLieuDepart());
+        $this->lieu->removeDepartTrajet($this->trajet);
+        $this->assertNull($this->trajet->getLieuDepart());
+    }
+
 }
